@@ -50,13 +50,23 @@ $(document).ready(function () {
 
     var saveButton = $('.btn');
     saveButton.on('click', function() {
-        
-        var newEvent = localStorage.getItem('newEvent');
+        var newEvent = $(this).siblings('.description').val();  //siblings returns all sibling elements of the selected element
         console.log(newEvent);
-        var blockHour = $('time-block');
-        blockHour.textContent = newEvent;
-        localStorage.setItem('newEvent', newEvent);
+        var eventTime = $(this).parent().attr('id').split('-')[1];    //get the id of the parent, split the string, take the 2nd part
+        console.log(eventTime);
+     
+        localStorage.setItem(eventTime, newEvent);
     })
+
+    $('#hour-09 .description').val(localStorage.getItem('hour-09 .description'));
+    $('#hour-10 .description').val(localStorage.getItem('hour-10 .description'));
+    $('#hour-11 .description').val(localStorage.getItem('hour-11 .description'));
+    $('#hour-12 .description').val(localStorage.getItem('hour-12 .description'));
+    $('#hour-13 .description').val(localStorage.getItem('hour-13 .description'));
+    $('#hour-14 .description').val(localStorage.getItem('hour-14 .description'));
+    $('#hour-15 .description').val(localStorage.getItem('hour-15 .description'));
+    $('#hour-16 .description').val(localStorage.getItem('hour-16 .description'));
+    $('#hour-17 .description').val(localStorage.getItem('hour-17 .description'));
 })   
 
 // use siblings for connecting text area to save button
