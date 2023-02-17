@@ -29,8 +29,8 @@ $(document).ready(function () {
 
     $('.time-block').each(function(){
         var dayjsObject = dayjs();
-        // var currentHour = dayjsObject.hour();
-        var currentHour = '13'
+        var currentHour = dayjsObject.hour();
+        // var currentHour = '13'
         var blockId = this.id;
         var idSplit = blockId.split('-');
         var blockHour = idSplit[1];
