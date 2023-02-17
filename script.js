@@ -24,10 +24,13 @@
 
 
 $(document).ready(function () {
-    
+    var today = dayjs();
+    $('#currentDay').text(today.format('dddd, MMMM D YYYY'));
+
     $('.time-block').each(function(){
         var dayjsObject = dayjs();
-        var currentHour = dayjsObject.hour();
+        // var currentHour = dayjsObject.hour();
+        var currentHour = '13'
         var blockId = this.id;
         var idSplit = blockId.split('-');
         var blockHour = idSplit[1];
@@ -35,33 +38,27 @@ $(document).ready(function () {
 
         // if before, during, after
         if (blockHour < currentHour) {
-            console.log("before")
-            // $(this).children('.description').css('background', 'gray');
+            // console.log("before")
+            $(this).children('.description').css('background', '#d3d3d3');
         } else if (blockHour == currentHour) {
-            console.log("during");
+            // console.log("during");
+            $(this).children('.description').css('background', '#ff6961');
         } else {
-
+            $(this).children('.description').css('background', '#77dd77');
         }
     })
-})
+
+    var saveButton = $('.btn');
+    saveButton.on('click', function() {
+        
+        var newEvent = localStorage.getItem('newEvent');
+        console.log(newEvent);
+        var blockHour = $('time-block');
+        blockHour.textContent = newEvent;
+        localStorage.setItem('newEvent', newEvent);
+    })
+})   
 
 // use siblings for connecting text area to save button
 
-
-  //making sure document elements are ready
-    // var stringVar ="3"
-    // var numVar = parseInt(stringVar);
-    // console.log(stringVar == numVar);
-
-
-
-//   $('.time-block').each(function () {
-//     if(blockHour < currentHour) {
-//     } else if (blockHour === currentHour) {
-//     } else{
-//     }
-//   })
-
-//   var currentHour;
-//   var blockHour;
 
